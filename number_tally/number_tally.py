@@ -31,14 +31,17 @@ def index():
     return rx.center(
         rx.vstack(
             rx.hstack(
+            rx.heading(State.count, font_size="2em")
+            ),
+            rx.hstack(
                 rx.button("+1",
                           color="white",
                           bg="green",
                           border_radius="1g",
                           on_click=State.increase1)
+            )
         )
     )
-)
 app = rx.App(State=State)
 app.add_page(index, "/", title="numtally")
 app.compile
