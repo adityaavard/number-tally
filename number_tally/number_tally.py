@@ -1,43 +1,44 @@
+# hi, welcome to numbertally!
+
 #imports
+
 import reflex as rx
-#add state
+
+# addings state
+
 class State(rx.State):
-    count = 0
 
-    def incrementby1(self):
-        self.count += 1
+    # adding count
 
-    def decrementby1(self):
-        self.count -= 1
+    count: int = 0
 
-    def multiplyby2(self):
-        self.count *= 2
-
-    def divideby2(self):
-        self.count /= 2
-
-    def incrementby5(self):
-        self.count += 5
+    def increase1(self):
+        self.count + 1
     
-    def decrementby5(self):
-        self.count -= 5
-
-    def resetcounter(self):
+    def decrease1(self):
+        self.count - 1
+    
+    def increase2(self):
+        self.count += 1
+    
+    def decrease2(self):
+        self.count -= 1
+    
+    def resetcount(self):
         self.count = 0
 
-#main page
-
 def index():
-    return rx.hstack(
+    return rx.center(
         rx.vstack(
-            rx.button("+1",
-                      bg="green",
-                      color="white",
-                      on_click=State.incrementby1)
+            rx.hstack(
+                rx.button("+1",
+                          color="white",
+                          bg="green",
+                          border_radius="1g",
+                          on_click=State.increase1)
         )
     )
-
-#reflex compiler
-epp = rx.App(state=State)
-epp.add_page(index, "/", title="numbertally")
-epp.compile()
+)
+app = rx.App(State=State)
+app.addpage(index,path="/", title="numtally")
+app.compile
