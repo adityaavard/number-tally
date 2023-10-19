@@ -40,5 +40,5 @@ def index():
     )
 )
 app = rx.App(State=State)
-app.addpage(index,path="/", title="numtally")
+app.add_page(index,path="/", title="numtally")
 app.compile
